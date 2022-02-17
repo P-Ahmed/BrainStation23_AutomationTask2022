@@ -16,7 +16,8 @@ This is an Automation Task provided by Brain Station 23 for the purpose of hirin
 5. Open the project folder
 6. Double click on "build.gradle" and open it through IntellIJ IDEA
 7. Let the project build successfully
-8. Click on "Terminal" and run the automation scripts
+8. In "./src/test/resources/Users.json" replace the whole JSON content with [] and save
+9. Click on "Terminal" and run the automation scripts
 
 ## Run the automation script:
 1. Type the command:
