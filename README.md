@@ -30,6 +30,6 @@ gradle clean test
 allure generate allure-results --clean -o allure-report
 allure serve allure-results
 ```
-## Here is the allure report of my project:
+## Here is the "Allure Report" of my project:
 ![Snag_273bb034](https://user-images.githubusercontent.com/28926103/154532628-0b173248-1952-4613-b4a6-1a3b22c54b01.png)
 ![Snag_273be667](https://user-images.githubusercontent.com/28926103/154532678-68702a6b-c6dc-42a7-be4d-0790154eb891.png)
