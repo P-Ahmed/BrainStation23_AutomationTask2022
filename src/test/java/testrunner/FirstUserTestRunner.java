@@ -1,9 +1,9 @@
-package TestRunner;
+package testrunner;
 
-import Pages.Login;
-import Pages.PurchaseItem;
-import Setup.Setup;
-import Utility.Utility;
+import pages.Login;
+import pages.PurchaseItem;
+import setup.Setup;
+import utility.Utility;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -20,10 +20,8 @@ public class FirstUserTestRunner extends Setup {
         login = new Login(driver);
         utility = new Utility(driver);
         purchaseItem = new PurchaseItem(driver);
-        String email = utility.readEmailFromJSON(0);
-        String password = utility.readPasswordFromJSON(0);
-
-        driver.get("http://automationpractice.com/index.php");
+        String email = utility.readFromJSON(0, "email");
+        String password = utility.readFromJSON(0, "password");
 
         login.doLogin(email,password);
 

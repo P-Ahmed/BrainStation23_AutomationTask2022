@@ -1,4 +1,4 @@
-package Utility;
+package utility;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -7,18 +7,21 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class Utility {
     WebDriver driver;
+    String fileName = "./src/test/resources/Users.json";
+
     public Utility(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
+
     public void writeInJSON(String email, String password) throws IOException, ParseException {
-        String fileName = "./src/test/resources/Users.json";
         JSONParser jsonParser = new JSONParser();
         Object obj = jsonParser.parse(new FileReader(fileName));
         JSONObject jsonObject = new JSONObject();
@@ -30,22 +33,12 @@ public class Utility {
         file.write(jsonArray.toJSONString());
         file.flush();
     }
-    public String readEmailFromJSON(int position) throws IOException, ParseException {
-        String fileName = "./src/test/resources/Users.json";
+    public String readFromJSON(int position, String key) throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
         Object object = jsonParser.parse(new FileReader(fileName));
         JSONArray jsonArray = (JSONArray) object;
         JSONObject jsonObject = (JSONObject) jsonArray.get(position);
-        String email = (String) jsonObject.get("email");
-        return email;
-    }
-    public String readPasswordFromJSON(int position) throws IOException, ParseException {
-        String fileName = "./src/test/resources/Users.json";
-        JSONParser jsonParser = new JSONParser();
-        Object object = jsonParser.parse(new FileReader(fileName));
-        JSONArray jsonArray = (JSONArray) object;
-        JSONObject jsonObject = (JSONObject) jsonArray.get(position);
-        String password = (String) jsonObject.get("password");
-        return password;
+        String value = (String) jsonObject.get(key);
+        return value;
     }
 }

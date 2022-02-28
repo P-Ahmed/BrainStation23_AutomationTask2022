@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -48,7 +48,6 @@ public class PurchaseItem {
     WebElement confirmOrder;
     @FindBy(xpath = "//p[@class='alert alert-success']")
     WebElement orderConfirmation;
-    //text(Your order on My Store is complete.)
 
 
     public PurchaseItem(WebDriver driver) {
@@ -60,9 +59,10 @@ public class PurchaseItem {
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         Thread.sleep(3000);
         selectDress.get(1).click();
+        wait.until(ExpectedConditions.elementToBeClickable(selectCasualDress));
         selectCasualDress.click();
         selectPrintedDress.get(1).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@name='Submit']")));
+        wait.until(ExpectedConditions.elementToBeClickable(addToCart));
         addToCart.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='cross']")));
         cross.click();
@@ -73,10 +73,10 @@ public class PurchaseItem {
         selectTShirtsMenu.get(1).click();
         Thread.sleep(2000);
         selectingShirt.get(1).click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(selectingBlueFilter));
         selectingBlueFilter.click();
         Thread.sleep(2000);
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@name='Submit']")));
+        wait.until(ExpectedConditions.elementToBeClickable(addToCart));
         addToCart.click();
         Thread.sleep(3000);
     }
@@ -85,20 +85,21 @@ public class PurchaseItem {
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         //Thread.sleep(3000);
         toCheckout.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='button btn btn-default standard-checkout button-medium']//span[contains(text(),'Proceed to checkout')]")));
+        wait.until(ExpectedConditions.elementToBeClickable(summaryCheckout));
         summaryCheckout.click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(addressCheckout));
         addressCheckout.click();
         Thread.sleep(2000);
         checkBox.click();
         Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(shippingCheckout));
         shippingCheckout.click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(payByCheck));
         payByCheck.click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(confirmOrder));
         confirmOrder.click();
 
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(orderConfirmation));
         String successMessage = orderConfirmation.getText();
         return successMessage;
     }

@@ -1,4 +1,4 @@
-package Setup;
+package setup;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,6 +16,7 @@ public class Setup {
         System.setProperty("webdriver.gecko.driver", "./src/test/resources/geckodriver.exe");
         driver = new FirefoxDriver(ops);
         driver.manage().window().maximize();
+        driver.get("http://automationpractice.com/index.php");
     }
 
     @AfterTest

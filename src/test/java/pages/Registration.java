@@ -1,6 +1,6 @@
-package Pages;
+package pages;
 
-import Utility.Utility;
+import utility.Utility;
 import com.github.javafaker.Faker;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
@@ -53,7 +53,7 @@ public class Registration {
         Faker faker = new Faker();
         Utility utility = new Utility(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("login")));
+        wait.until(ExpectedConditions.elementToBeClickable(linkSignIn));
         linkSignIn.click();
 
         String firstName = faker.name().firstName();
@@ -62,12 +62,12 @@ public class Registration {
         utility.writeInJSON(email,password);
         String phone = "0150"+(int)(Math.random() * (9999999 - 1000000 + 1) + 1000000);
         //Thread.sleep(3000);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email_create")));
+        wait.until(ExpectedConditions.elementToBeClickable(textEmail));
         textEmail.sendKeys(email);
         Thread.sleep(1000);
         buttonCreateAnAccount.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("customer_firstname")));
+        wait.until(ExpectedConditions.elementToBeClickable(textFirstName));
         textFirstName.sendKeys(firstName);
         textLastName.sendKeys(faker.name().lastName());
         textPassword.sendKeys(password);
@@ -80,7 +80,7 @@ public class Registration {
         numberPostcode.sendKeys("56987");
         numberPhone.sendKeys(phone);
         submitRegister.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='logout']")));
+        wait.until(ExpectedConditions.elementToBeClickable(signOut));
         signOut.click();
     }
 }

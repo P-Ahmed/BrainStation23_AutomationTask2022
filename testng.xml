@@ -1,17 +1,17 @@
 <suite thread-count="1" verbose="1" name="Automation task of Brain Station 23">
     <test name = "Registration process for 2 users">
         <classes>
-            <class name="TestRunner.RegistrationTestRunner"/>
+            <class name="testrunner.RegistrationTestRunner"/>
         </classes>
     </test>
     <test name = "First user login and purchasing items">
         <classes>
-            <class name="TestRunner.FirstUserTestRunner"/>
+            <class name="testrunner.FirstUserTestRunner"/>
         </classes>
     </test>
     <test name = "Second user login and purchasing items">
         <classes>
-            <class name="TestRunner.SecondUserTestRunner"/>
+            <class name="testrunner.SecondUserTestRunner"/>
         </classes>
     </test>
 </suite>
